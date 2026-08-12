@@ -51,9 +51,7 @@ omega_clipped = np.clip(omega_z, clim_min, clim_max)
 # Enable below and disable 4 lines above to turn into continous spin
 azim_seq = np.linspace(azim_start, azim_start + 360, n_frames)
 
-# ============================================================
 # FIGURE SETUP
-# ============================================================
 fig = plt.figure(figsize=(9, 6), facecolor='white')
 ax  = fig.add_subplot(111, projection='3d')
 ax.set_facecolor('white')
@@ -92,9 +90,7 @@ ax.set_yticks([])
 
 ax.grid(False)
 
-# ============================================================
 # ANIMATION
-# ============================================================
 def update(frame):
     ax.view_init(elev=elev_start, azim=azim_seq[frame])
     return sc,
