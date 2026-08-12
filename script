@@ -1,0 +1,10 @@
+debugjob --clean 1
+
+module load StdEnv/2023 gcc/12.3 openmpi/4.1.5 openfoam/v2412
+
+module load StdEnv/2020 gcc/9.3.0 openmpi/4.0.3 paraview-offscreen/5.11.0
+mpiexec -np 192 pvserver
+
+srun --ntasks=192 pvbatch extract-U-script-v3.py
+
+mpirun -np 384 redistributePar -reconstruct -parallel -latestTime
